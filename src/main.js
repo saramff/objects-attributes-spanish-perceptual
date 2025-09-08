@@ -26,6 +26,8 @@ if (randomNumber < 0.5) {
 
 const OBJECTS_URL =
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master";
+const FALSE_OBJECTS_URL = 
+  "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/object-attributes-images_NonExperimental";
 const TOTAL_IMAGES = 48;  
 
 // Create pictures arrays for objects images
@@ -41,6 +43,19 @@ const objectsExperimental = objectsImages.map((objImg) => {
   }
 })
 
+// Create pictures arrays for objects images
+const falseObjectsImages = Array.from(
+  { length: TOTAL_IMAGES },
+  (_, i) => `${FALSE_OBJECTS_URL}/object-${i + 1}.jpg`
+);
+
+const falseObjectsExperimental = falseObjectsImages.map((objImg) => {
+  return {
+    img: objImg,
+    correct_response: incorrectKey
+  }
+})
+
 
 /**************************************************************************************/
 
@@ -52,8 +67,21 @@ function shuffle(array) {
   }
 }
 
-shuffle(objectsImages);
+
+/**************************************************************************************/
+
+// Shuffle objectsExperimental and falseObjectsExperimental arrays 
+
 shuffle(objectsExperimental);
+shuffle(falseObjectsExperimental);
+
+// Create a new array with both of them combined
+
+const allObjectsExperimental = [...objectsExperimental, ...falseObjectsExperimental];
+
+// Shuffle allObjectsExperimental
+
+shuffle(allObjectsExperimental);
 
 /**************************************************************************************/
 
@@ -219,6 +247,12 @@ let preload = {
 };
 timeline.push(preload);
 
+let preload2 = {
+  type: jsPsychPreload,
+  images: falseObjectsImages,
+};
+timeline.push(preload);
+
 
 /* Fixation trial */
 let fixation = {
@@ -356,7 +390,7 @@ let instructionsObjectsNamePresentation = {
 timeline.push(instructionsObjectsNamePresentation);
 
 /* Create stimuli array for objects experimental images presentation */
-let objectsExperimentalRecognitionStimuli = objectsExperimental.map((objExperimental) => {
+let objectsExperimentalRecognitionStimuli = allObjectsExperimental.map((objExperimental) => {
   return {
     stimulus: `
       <img class="object-img" src="${objExperimental.img}">
