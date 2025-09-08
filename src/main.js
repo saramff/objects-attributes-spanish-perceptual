@@ -26,7 +26,7 @@ if (randomNumber < 0.5) {
 
 const OBJECTS_URL =
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master";
-const TOTAL_IMAGES = 192;  
+const TOTAL_IMAGES = 48;  
 
 // Create pictures arrays for objects images
 const objectsImages = Array.from(
@@ -34,35 +34,13 @@ const objectsImages = Array.from(
   (_, i) => `${OBJECTS_URL}/object-${i + 1}.jpg`
 );
 
-/**************************************************************************************/
-
-const FALSE_OBJECTS_URL =
-  "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/object-attributes-images_NonExperimental";
-const TOTAL_OJECTS_IMAGES = 48;  
-
-const trueObjectsExperimental = objectsImages.slice(0, TOTAL_OJECTS_IMAGES);
-
-const trueObjectsExperimentalWithResponse = trueObjectsExperimental.map((objImg) => {
+const objectsExperimental = objectsImages.map((objImg) => {
   return {
     img: objImg,
     correct_response: correctKey
   }
 })
 
-// Create pictures arrays for objects images
-const falseObjectsExperimental = Array.from(
-  { length: TOTAL_OJECTS_IMAGES },
-  (_, i) => `${FALSE_OBJECTS_URL}/object-${i + 1}.jpg`
-);
-
-const falseObjectsExperimentalWithResponse = falseObjectsExperimental.map((objImg) => {
-  return {
-    img: objImg,
-    correct_response: incorrectKey
-  }
-})
-
-const objectsExperimental = [...trueObjectsExperimentalWithResponse, ...falseObjectsExperimentalWithResponse];
 
 /**************************************************************************************/
 
@@ -81,25 +59,12 @@ shuffle(objectsExperimental);
 
 const TOTAL_SENTENCES = 48;
 
-// Create function to get a new array with a random slice from other array
-function getRandomSlice(array, sliceSize) {
-  const arraySlice = [];
-
-  for (let i = 0; i < sliceSize; i++) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    const randomElem = array.splice(randomIndex, 1)[0];
-    arraySlice.push(randomElem);
-  }
-
-  return arraySlice;
-}
-
 shuffle(sentences);
-const sentencesSlice = getRandomSlice(sentences, TOTAL_SENTENCES);
 
 // New Array with first half with TRUE sentences and second half with FALSE sentences
-const sentencesWithResponse = sentencesSlice.map((sentence, index) => {
+const sentencesWithResponse = sentences.map((sentence, index) => {
   return {
+    img: sentence.img,
     sentence: index < TOTAL_SENTENCES / 2 ? sentence.true : sentence.false,
     correct_response: index < TOTAL_SENTENCES / 2 ? correctKey : incorrectKey
   }
@@ -254,12 +219,6 @@ let preload = {
 };
 timeline.push(preload);
 
-let preload2 = {
-  type: jsPsychPreload,
-  images: falseObjectsExperimental,
-};
-timeline.push(preload2);
-
 
 /* Fixation trial */
 let fixation = {
@@ -283,48 +242,6 @@ timeline.push(welcome);
 
 // /**************************************************************************************/
 
-/* Instructions trial */
-let instructions = {
-  type: jsPsychHtmlKeyboardResponse,
-  stimulus: `
-    <p>En este experimento verá una serie de objetos que podría encontrar en una casa.</p>  
-    <p>Por favor, preste mucha atención a cada objeto y a su aspecto.</p>
-    <p>Usted no tiene que hacer nada más que observar con atención.</p>
-    <p>Cuando esté preparado, pulse la barra espaciadora para empezar.</p>
-  `,
-  choices: [' '],
-  post_trial_gap: 500,
-};
-timeline.push(instructions);
-
-/* Create stimuli array for image presentation */
-let test_stimuli = objectsImages.map((objectImg) => {
-  return {
-    stimulus: `
-      <img class="object-img" src="${objectImg}">
-    `,
-  };
-});
-
-/* Image presentation trial */
-let test = {
-  type: jsPsychHtmlKeyboardResponse,
-  stimulus: jsPsych.timelineVariable("stimulus"),
-  choices: "NO_KEYS", // Prevent key press
-  trial_duration: 2000, // Display each image for 2 second
-  post_trial_gap: 500
-};
-
-/* Test procedure: fixation + image presentation */
-let test_procedure = {
-  timeline: [fixation, test],
-  timeline_variables: test_stimuli,
-  randomize_order: true, // Randomize image order
-};
-timeline.push(test_procedure);
-
-
-/**************************************************************************************/
 
 /* Instructions for sentence presentation */
 let instructionsSentencePresentation = {
@@ -354,6 +271,7 @@ timeline.push(instructionsSentencePresentation);
 let sentenceRecognitionStimuli = sentencesWithResponse.map((sentence) => {
   return {
     stimulus: `
+      <img src="${sentence.img}">
       <h3 class="sentence">${sentence.sentence}</h3>
       <div class="keys">
         <p class="${correctKey === 'a' ? 'left' : 'right'}">SÍ</p>
@@ -414,7 +332,7 @@ let tetris = {
   `,
   post_trial_gap: 500,
   choices: "NO_KEYS", // Prevent key press
-  trial_duration: 1200000, 
+  trial_duration: 120, 
 };
 timeline.push(tetris);
 
