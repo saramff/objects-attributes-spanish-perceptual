@@ -251,7 +251,7 @@ let preload2 = {
   type: jsPsychPreload,
   images: falseObjectsImages,
 };
-timeline.push(preload);
+timeline.push(preload2);
 
 
 /* Fixation trial */
@@ -281,14 +281,14 @@ timeline.push(welcome);
 let instructionsSentencePresentation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>Ahora verá una serie de frases en la pantalla.</p>
-    </p>Cada frase describe una característica de los objetos que ha visto anteriormente, que podrá ser verdadera o falsa.</p>
+    <p>En esta tarea verá una serie de objetos acompañados de una frase en la pantalla.</p>
+    </p>La frase describirá una característica del objeto mostrado, que podrá ser verdadera o falsa.</p>
     </p></p>
     <p>Si la frase es verdadera, pulse la tecla '${correctKey.toUpperCase()}' (sí).</p>
     <p>Si la frase es falsa, pulse la tecla '${incorrectKey.toUpperCase()}' (no).</p>
     </p></p>
     <p>Le recomendamos colocar los dedos sobre las teclas ${correctKey.toUpperCase()} y ${incorrectKey.toUpperCase()} durante la tarea para no olvidarlas.</p>
-    </p>Por ejemplo: si anteriormente ha visto la imagen de una caja abierta y luego aparece la frase: "La caja estaba cerrada", deberá pulsar "NO".</p>
+    </p>Por ejemplo: si aparece la imagen de una caja abierta y aparece la frase: "La caja está cerrada", deberá pulsar "NO".</p>
     <br />
     <div>
       <img src='https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/Caja.jpg'  class="img-instructions" />
