@@ -3,8 +3,8 @@
 //                                                                    //  
 ////////////////////////////////////////////////////////////////////////
 
-import { createClient } from "@supabase/supabase-js";
-import { sentences } from "./objects.js";
+// import { createClient } from "@supabase/supabase-js";
+import { sentences, controlSentences } from "./objects.js";
 
 
 /**************************************************************************************/
@@ -28,12 +28,19 @@ const OBJECTS_URL =
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master";
 const FALSE_OBJECTS_URL = 
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/object-attributes-images_NonExperimental";
-const TOTAL_IMAGES = 48;  
+const TOTAL_IMAGES = 48;
+const TOTAL_CONTROL_IMAGES = 144;
 
 // Create pictures arrays for objects images
 const objectsImages = Array.from(
   { length: TOTAL_IMAGES },
   (_, i) => `${OBJECTS_URL}/object-${i + 1}.jpg`
+);
+
+// Create pictures arrays for control objects images
+const controlObjectsImages = Array.from(
+  { length: TOTAL_CONTROL_IMAGES },
+  (_, i) => `${OBJECTS_URL}/object-${i + 49}.jpg`
 );
 
 const objectsExperimental = objectsImages.map((objImg) => {
@@ -43,7 +50,7 @@ const objectsExperimental = objectsImages.map((objImg) => {
   }
 })
 
-// Create pictures arrays for objects images
+// Create pictures arrays for false objects images
 const falseObjectsImages = Array.from(
   { length: TOTAL_IMAGES },
   (_, i) => `${FALSE_OBJECTS_URL}/object-${i + 1}.jpg`
@@ -100,6 +107,14 @@ const sentencesWithResponse = sentences.map((sentence, index) => {
 
 // Shuffle sentences with response
 shuffle(sentencesWithResponse);
+
+
+/**************************************************************************************/
+
+// New array with sentences with response & control sentences
+shuffle(controlSentences);
+const allSentences = [...sentencesWithResponse, ...controlSentences];
+shuffle(allSentences);
 
 
 /**************************************************************************************/
@@ -253,6 +268,12 @@ let preload2 = {
 };
 timeline.push(preload2);
 
+let preload3 = {
+  type: jsPsychPreload,
+  images: controlObjectsImages,
+};
+timeline.push(preload3);
+
 
 /* Fixation trial */
 let fixation = {
@@ -302,18 +323,32 @@ let instructionsSentencePresentation = {
 timeline.push(instructionsSentencePresentation);
 
 /* Create stimuli array for sentence presentation */
-let sentenceRecognitionStimuli = sentencesWithResponse.map((sentence) => {
-  return {
-    stimulus: `
-      <img src="${sentence.img}">
-      <h3 class="sentence">${sentence.sentence}</h3>
-      <div class="keys">
-        <p class="${correctKey === 'a' ? 'left' : 'right'}">SÍ</p>
-        <p class="${correctKey === 'a' ? 'right' : 'left'}">NO</p>
-      </div>
-    `,
-    correct_response: sentence.correct_response
-  };
+let sentenceRecognitionStimuli = allSentences.map((sentence) => {
+  if (!sentence.control) {
+    return {
+      stimulus: `
+        <img src="${sentence.img}">
+        <h3 class="sentence">${sentence.sentence}</h3>
+        <div class="keys">
+          <p class="${correctKey === 'a' ? 'left' : 'right'}">SÍ</p>
+          <p class="${correctKey === 'a' ? 'right' : 'left'}">NO</p>
+        </div>
+      `,
+      correct_response: sentence.correct_response
+    };
+  } else {
+    return {
+      stimulus: `
+        <img src="${sentence.img}">
+        <h3 class="sentence">${sentence.control}</h3>
+        <div class="keys">
+          <p class="left">CONTINUAR</p>
+          <p class="right">CONTINUAR</p>
+        </div>
+      `,
+      correct_response: null
+    }
+  }
 });
 
 /* Sentences presentation trial */
@@ -433,29 +468,29 @@ timeline.push(testObjectsExperimentalImgProcedure);
 /**************************************************************************************/
 
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_API_KEY
-);
+// const supabase = createClient(
+//   import.meta.env.VITE_SUPABASE_URL,
+//   import.meta.env.VITE_SUPABASE_API_KEY
+// );
 
-const TABLE_NAME = "experimento_objetos_atributos_perceptual";
+// const TABLE_NAME = "experimento_objetos_atributos_perceptual";
 
-async function saveData(data) {
-  console.log(data);
-  const { error } = await supabase.from(TABLE_NAME).insert({ data });
+// async function saveData(data) {
+//   console.log(data);
+//   const { error } = await supabase.from(TABLE_NAME).insert({ data });
 
-  return { error };
-}
+//   return { error };
+// }
 
-const saveDataBlock = {
-  type: jsPsychCallFunction,
-  func: function() {
-    saveData(jsPsych.data.get())
-  },
-  timing_post_trial: 200
-}
+// const saveDataBlock = {
+//   type: jsPsychCallFunction,
+//   func: function() {
+//     saveData(jsPsych.data.get())
+//   },
+//   timing_post_trial: 200
+// }
 
-timeline.push(saveDataBlock);
+// timeline.push(saveDataBlock);
 
 
 

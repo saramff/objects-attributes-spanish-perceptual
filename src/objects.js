@@ -1,4 +1,5 @@
-const IMG_URL = "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/object-"
+const IMG_URL =
+  "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/object-";
 
 export const sentences = [
   {
@@ -243,3 +244,581 @@ export const sentences = [
   },
 ];
 
+export const controlSentences = [
+  {
+    img: `${IMG_URL}49.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}50.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}51.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}52.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}53.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}54.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}55.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}56.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}57.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}58.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}59.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}60.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}61.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}62.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}63.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}64.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}65.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}66.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}67.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}68.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}69.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}70.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}71.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}72.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}73.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}74.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}75.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}76.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}77.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}78.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}79.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}80.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}81.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}82.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}83.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}84.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}85.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}86.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}87.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}88.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}89.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}90.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}91.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}92.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}93.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}94.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}95.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}96.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}97.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}98.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}99.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}100.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}101.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}102.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}103.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}104.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}105.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}106.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}107.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}108.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}109.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}110.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}111.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}112.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}113.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}114.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}115.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}116.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}117.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}118.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}119.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}120.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}121.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}122.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}123.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}124.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}125.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}126.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}127.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}128.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}129.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}130.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}131.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}132.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}133.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}134.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}135.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}136.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}137.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}138.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}139.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}140.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}141.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}142.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}143.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}144.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}145.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}146.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}147.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}148.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}149.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}150.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}151.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}152.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}153.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}154.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}155.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}156.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}157.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}158.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}159.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}160.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}161.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}162.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}163.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}164.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}165.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}166.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}167.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}168.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}169.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}170.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}171.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}172.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}173.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}174.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}175.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}176.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}177.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}178.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}179.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}180.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}181.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}182.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}183.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}184.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}185.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}186.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}187.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}188.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}189.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}190.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}191.jpg`,
+    control: "caja",
+  },
+  {
+    img: `${IMG_URL}192.jpg`,
+    control: "caja",
+  },
+];
