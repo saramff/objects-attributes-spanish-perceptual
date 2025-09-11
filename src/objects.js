@@ -448,7 +448,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}68.jpg`,
-    name: "melón",
+    name: "sandía",
   },
   {
     img: `${IMG_URL}69.jpg`,
@@ -876,7 +876,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}175.jpg`,
-    name: "limón",
+    name: "melón",
   },
   {
     img: `${IMG_URL}176.jpg`,
