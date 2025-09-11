@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////////////////////////////
 
 // import { createClient } from "@supabase/supabase-js";
-import { sentences, controlSentences } from "./objects.js";
+import { sentences, controlSentences, nonExperimentalNames } from "./objects.js";
 
 
 /**************************************************************************************/
@@ -24,10 +24,18 @@ if (randomNumber < 0.5) {
 
 /**************************************************************************************/
 
+// Create suffle function - suffles array index randomly
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+/**************************************************************************************/
+
 const OBJECTS_URL =
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master";
-const FALSE_OBJECTS_URL = 
-  "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/object-attributes-images_NonExperimental";
 const TOTAL_IMAGES = 48;
 const TOTAL_CONTROL_IMAGES = 144;
 
@@ -43,48 +51,45 @@ const controlObjectsImages = Array.from(
   (_, i) => `${OBJECTS_URL}/object-${i + 49}.jpg`
 );
 
-const objectsExperimental = objectsImages.map((objImg) => {
+const objectsExperimental = sentences.map((sentence) => {
   return {
-    img: objImg,
+    name: sentence.name,
     correct_response: correctKey
   }
 })
 
-// Create pictures arrays for false objects images
-const falseObjectsImages = Array.from(
-  { length: TOTAL_IMAGES },
-  (_, i) => `${FALSE_OBJECTS_URL}/object-${i + 1}.jpg`
-);
-
-const falseObjectsExperimental = falseObjectsImages.map((objImg) => {
+const objectsNonExperimental = nonExperimentalNames.map((nonExperimentalName) => {
   return {
-    img: objImg,
+    name: nonExperimentalName.name,
     correct_response: incorrectKey
+  }
+})
+
+// Create a slice of 24 elements for a shuffled controlSentences array
+
+shuffle(controlSentences);
+const controlSentencesSlice = controlSentences.slice(0, 24);
+
+const objectsControlExperimental = controlSentences.map((control) => {
+  return {
+    name: control.name,
+    correct_response: correctKey
   }
 })
 
 
 /**************************************************************************************/
 
-// Create suffle function - suffles array index randomly
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-
-/**************************************************************************************/
-
-// Shuffle objectsExperimental and falseObjectsExperimental arrays 
+// Shuffle objectsExperimental, objectsNonExperimental & objectsControlExperimental arrays 
 
 shuffle(objectsExperimental);
-shuffle(falseObjectsExperimental);
+shuffle(objectsNonExperimental);
+shuffle(objectsControlExperimental);
 
-// Create a new array with both of them combined
 
-const allObjectsExperimental = [...objectsExperimental, ...falseObjectsExperimental];
+// Create a new array with all of them combined
+
+const allObjectsExperimental = [...objectsExperimental, ...objectsNonExperimental, ...objectsControlExperimental];
 
 // Shuffle allObjectsExperimental
 
@@ -112,7 +117,6 @@ shuffle(sentencesWithResponse);
 /**************************************************************************************/
 
 // New array with sentences with response & control sentences
-shuffle(controlSentences);
 const allSentences = [...sentencesWithResponse, ...controlSentences];
 shuffle(allSentences);
 
@@ -264,15 +268,9 @@ timeline.push(preload);
 
 let preload2 = {
   type: jsPsychPreload,
-  images: falseObjectsImages,
-};
-timeline.push(preload2);
-
-let preload3 = {
-  type: jsPsychPreload,
   images: controlObjectsImages,
 };
-timeline.push(preload3);
+timeline.push(preload2);
 
 
 /* Fixation trial */
@@ -324,7 +322,7 @@ timeline.push(instructionsSentencePresentation);
 
 /* Create stimuli array for sentence presentation */
 let sentenceRecognitionStimuli = allSentences.map((sentence) => {
-  if (!sentence.control) {
+  if (!sentence.name) {
     return {
       stimulus: `
         <h3 class="sentence">${sentence.sentence}</h3>
@@ -339,7 +337,7 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   } else {
     return {
       stimulus: `
-        <h3 class="sentence">${sentence.control}</h3>
+        <h3 class="sentence">${sentence.name}</h3>
         <img class="object-img" src="${sentence.img}">
         <div class="keys">
           <p class="left">CONTINUAR</p>
@@ -409,7 +407,7 @@ timeline.push(tetris);
 /**************************************************************************************/
 
 
-/* Instructions for objects experimental images presentation */
+/* Instructions for objects experimental names presentation */
 let instructionsObjectsNamePresentation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
@@ -424,11 +422,11 @@ let instructionsObjectsNamePresentation = {
 };
 timeline.push(instructionsObjectsNamePresentation);
 
-/* Create stimuli array for objects experimental images presentation */
+/* Create stimuli array for objects experimental names presentation */
 let objectsExperimentalRecognitionStimuli = allObjectsExperimental.map((objExperimental) => {
   return {
     stimulus: `
-      <img class="object-img" src="${objExperimental.img}">
+      <h3 class="sentence">${objExperimental.name}</h3>
       <div class="keys">
         <p class="${correctKey === 'a' ? 'left' : 'right'}">PRESENTE</p>
         <p class="${correctKey === 'a' ? 'right' : 'left'}">NO PRESENTE</p>
@@ -438,13 +436,13 @@ let objectsExperimentalRecognitionStimuli = allObjectsExperimental.map((objExper
   };
 });
 
-/* Objects experimental images presentation trial */
-let testObjectsExperimentalImg = {
+/* Objects experimental names presentation trial */
+let testObjectsExperimentalName = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: jsPsych.timelineVariable("stimulus"),
   choices: ['a', 'l'],
   data: {
-    task: "response objects experimental images test",
+    task: "response objects experimental names test",
     correct_response: jsPsych.timelineVariable("correct_response"),
   },
   on_finish: function (data) {
@@ -456,13 +454,13 @@ let testObjectsExperimentalImg = {
   },
 };
 
-/* Test procedure: fixation + objects experimental images presentation */
-let testObjectsExperimentalImgProcedure = {
-  timeline: [fixation, testObjectsExperimentalImg],
+/* Test procedure: fixation + objects experimental names presentation */
+let testObjectsExperimentalNameProcedure = {
+  timeline: [fixation, testObjectsExperimentalName],
   timeline_variables: objectsExperimentalRecognitionStimuli,
   randomize_order: true, // Randomize objects name order
 };
-timeline.push(testObjectsExperimentalImgProcedure);
+timeline.push(testObjectsExperimentalNameProcedure);
 
 
 /**************************************************************************************/
