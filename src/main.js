@@ -324,6 +324,10 @@ timeline.push(instructionsSentencePresentation);
 let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   if (!sentence.name) {
     return {
+      justImgStimulus: `
+        <h3 class="sentence"></h3>
+        <img class="object-img" src="${sentence.img}">
+      `,
       stimulus: `
         <h3 class="sentence">${sentence.sentence}</h3>
         <img class="object-img" src="${sentence.img}">
@@ -336,6 +340,10 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
     };
   } else {
     return {
+      justImgStimulus: `
+        <h3 class="sentence"></h3>
+        <img class="object-img" src="${sentence.img}">
+      `,
       stimulus: `
         <h3 class="sentence">${sentence.name}</h3>
         <img class="object-img" src="${sentence.img}">
@@ -348,6 +356,14 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
     }
   }
 });
+
+/* Just Image trial */
+let justImg = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: jsPsych.timelineVariable("justImgStimulus"),
+  choices: "NO_KEYS", // Prevent key press
+  trial_duration: 1000, // just image duration
+};
 
 /* Sentences presentation trial */
 let testSentences = {
@@ -369,7 +385,7 @@ let testSentences = {
 
 /* Test procedure: fixation + sentences presentation */
 let testSentencesProcedure = {
-  timeline: [fixation, testSentences],
+  timeline: [fixation, justImg, testSentences],
   timeline_variables: sentenceRecognitionStimuli,
   randomize_order: true, // Randomize sentences order
 };
