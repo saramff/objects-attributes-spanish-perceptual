@@ -327,8 +327,8 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   if (!sentence.control) {
     return {
       stimulus: `
-        <img src="${sentence.img}">
         <h3 class="sentence">${sentence.sentence}</h3>
+        <img class="object-img" src="${sentence.img}">
         <div class="keys">
           <p class="${correctKey === 'a' ? 'left' : 'right'}">SÍ</p>
           <p class="${correctKey === 'a' ? 'right' : 'left'}">NO</p>
@@ -339,8 +339,8 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   } else {
     return {
       stimulus: `
-        <img src="${sentence.img}">
         <h3 class="sentence">${sentence.control}</h3>
+        <img class="object-img" src="${sentence.img}">
         <div class="keys">
           <p class="left">CONTINUAR</p>
           <p class="right">CONTINUAR</p>
