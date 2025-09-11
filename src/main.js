@@ -36,8 +36,8 @@ function shuffle(array) {
 
 const OBJECTS_URL =
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master";
-const TOTAL_IMAGES = 10;
-const TOTAL_CONTROL_IMAGES = 10;
+const TOTAL_IMAGES = 48;
+const TOTAL_CONTROL_IMAGES = 144;
 
 // Create pictures arrays for objects images
 const objectsImages = Array.from(
@@ -97,7 +97,7 @@ shuffle(allObjectsExperimental);
 
 /**************************************************************************************/
 
-const TOTAL_SENTENCES = 10;
+const TOTAL_SENTENCES = 48;
 
 shuffle(sentences);
 
@@ -323,7 +323,7 @@ let instructionsSentencePresentation = {
 timeline.push(instructionsSentencePresentation);
 
 /* Create stimuli array for sentence presentation */
-let sentenceRecognitionStimuli = allSentences.map((sentence) => {
+let sentenceRecognitionStimuli = allSentences.slice(0,10).map((sentence) => {
   if (!sentence.name) {
     return {
       justImgStimulus: `
@@ -364,7 +364,7 @@ let justImg = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: jsPsych.timelineVariable("justImgStimulus"),
   choices: "NO_KEYS", // Prevent key press
-  trial_duration: 1000, // just image duration
+  trial_duration: 1, // just image duration
 };
 
 /* Sentences presentation trial */
@@ -441,7 +441,7 @@ let instructionsObjectsNamePresentation = {
 timeline.push(instructionsObjectsNamePresentation);
 
 /* Create stimuli array for objects experimental names presentation */
-let objectsExperimentalRecognitionStimuli = allObjectsExperimental.map((objExperimental) => {
+let objectsExperimentalRecognitionStimuli = allObjectsExperimental.slice(0,10).map((objExperimental) => {
   return {
     stimulus: `
       <h3 class="sentence">${objExperimental.name}</h3>
