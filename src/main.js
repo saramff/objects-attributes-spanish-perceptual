@@ -36,8 +36,8 @@ function shuffle(array) {
 
 const OBJECTS_URL =
   "https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master";
-const TOTAL_IMAGES = 48;
-const TOTAL_CONTROL_IMAGES = 144;
+const TOTAL_IMAGES = 10;
+const TOTAL_CONTROL_IMAGES = 10;
 
 // Create pictures arrays for objects images
 const objectsImages = Array.from(
@@ -97,7 +97,7 @@ shuffle(allObjectsExperimental);
 
 /**************************************************************************************/
 
-const TOTAL_SENTENCES = 48;
+const TOTAL_SENTENCES = 10;
 
 shuffle(sentences);
 
