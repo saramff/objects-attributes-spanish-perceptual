@@ -323,7 +323,7 @@ let instructionsSentencePresentation = {
 timeline.push(instructionsSentencePresentation);
 
 /* Create stimuli array for sentence presentation */
-let sentenceRecognitionStimuli = allSentences.slice(0,10).map((sentence) => {
+let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   if (!sentence.name) {
     return {
       justImgStimulus: `
@@ -364,7 +364,7 @@ let justImg = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: jsPsych.timelineVariable("justImgStimulus"),
   choices: "NO_KEYS", // Prevent key press
-  trial_duration: 1, // just image duration
+  trial_duration: 1000, // just image duration
 };
 
 /* Sentences presentation trial */
@@ -441,7 +441,7 @@ let instructionsObjectsNamePresentation = {
 timeline.push(instructionsObjectsNamePresentation);
 
 /* Create stimuli array for objects experimental names presentation */
-let objectsExperimentalRecognitionStimuli = allObjectsExperimental.slice(0,10).map((objExperimental) => {
+let objectsExperimentalRecognitionStimuli = allObjectsExperimental.map((objExperimental) => {
   return {
     stimulus: `
       <h3 class="sentence">${objExperimental.name}</h3>
