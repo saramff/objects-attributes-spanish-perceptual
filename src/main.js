@@ -300,11 +300,13 @@ timeline.push(welcome);
 let instructionsSentencePresentation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>En esta tarea verá una serie de objetos acompañados de una frase en la pantalla.</p>
-    </p>La frase describirá una característica del objeto mostrado, que podrá ser verdadera o falsa.</p>
+    <p>En esta tarea verá una serie de objetos acompañados de su nombre.</p>
+    <p>Cuando aparezca el objeto, deberá realizar una sencilla tarea. Simplemente pulsa la tecla "A" del teclado o la tecla "L" del teclado indistintamente para continuar.</p>
+    </p>Únicamente deberás fijarte atentamente en el objeto.</p>
     </p></p>
-    <p>Si la frase es verdadera, pulse la tecla '${correctKey.toUpperCase()}' (sí).</p>
-    <p>Si la frase es falsa, pulse la tecla '${incorrectKey.toUpperCase()}' (no).</p>
+    </p>En otras ocasiones, el objeto vendrá acompañado de una frase relacionada para mantener tu atención y tendrás que indicar si es o no consistente con el objeto.</p>
+    <p>Si la frase es CONSISTENTE, pulse la tecla '${correctKey.toUpperCase()}' (sí).</p>
+    <p>Si la frase es NO ES CONSISTENTE, pulse la tecla '${incorrectKey.toUpperCase()}' (no).</p>
     </p></p>
     <p>Le recomendamos colocar los dedos sobre las teclas ${correctKey.toUpperCase()} y ${incorrectKey.toUpperCase()} durante la tarea para no olvidarlas.</p>
     </p>Por ejemplo: si aparece la imagen de una caja abierta y aparece la frase: "La caja está cerrada", deberá pulsar "NO".</p>
