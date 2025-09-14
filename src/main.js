@@ -65,9 +65,8 @@ const objectsNonExperimental = nonExperimentalNames.map((nonExperimentalName) =>
   }
 })
 
-// Create a slice of 24 elements for a shuffled controlSentences array
+// Create a slice of the first 24 elements of controlSentences array (without shuffle)
 
-shuffle(controlSentences);
 const controlSentencesSlice = controlSentences.slice(0, 24);
 
 const objectsControlExperimental = controlSentencesSlice.map((control) => {
@@ -116,7 +115,10 @@ shuffle(sentencesWithResponse);
 
 /**************************************************************************************/
 
-// New array with sentences with response & control sentences
+// New array with sentences with response & shuffled control sentences
+
+shuffle(controlSentences);
+
 const allSentences = [...sentencesWithResponse, ...controlSentences];
 shuffle(allSentences);
 
@@ -323,7 +325,7 @@ let instructionsSentencePresentation = {
 timeline.push(instructionsSentencePresentation);
 
 /* Create stimuli array for sentence presentation */
-let sentenceRecognitionStimuli = allSentences.map((sentence) => {
+let sentenceRecognitionStimuli = allSentences.slice(0,5).map((sentence) => {
   if (!sentence.name) {
     return {
       justImgStimulus: `
