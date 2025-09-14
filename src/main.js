@@ -3,7 +3,7 @@
 //                                                                    //  
 ////////////////////////////////////////////////////////////////////////
 
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 import { sentences, controlSentences, nonExperimentalNames } from "./objects.js";
 
 
@@ -190,7 +190,7 @@ var participantName = {
   }
 };
 
-// timeline.push(participantName);
+timeline.push(participantName);
 
 var centroAsociado = {
   type: jsPsychSurveyText,
@@ -210,7 +210,7 @@ var centroAsociado = {
   }
 };
 
-// timeline.push(centroAsociado);
+timeline.push(centroAsociado);
 
 var age = {
   type: jsPsychSurveyText,
@@ -230,7 +230,7 @@ var age = {
   }
 };
 
-// timeline.push(age);
+timeline.push(age);
 
 var demo2 = {
   type: jsPsychSurveyMultiChoice,
@@ -257,7 +257,7 @@ var demo2 = {
     jsPsych.data.addProperties({gender: help_gender, language: help_language});
   }
 };
-// timeline.push(demo2);
+timeline.push(demo2);
 
 /************************************************************************************************ */
 
@@ -302,16 +302,18 @@ timeline.push(welcome);
 let instructionsSentencePresentation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>En esta tarea verá una serie de objetos acompañados de su nombre.</p>
-    <p>Cuando aparezca el objeto, deberá realizar una sencilla tarea. Simplemente pulsa la tecla "A" del teclado o la tecla "L" del teclado indistintamente para continuar.</p>
-    </p>Únicamente deberás fijarte atentamente en el objeto.</p>
+    <p>En esta tarea verás una serie de objetos que aparecerán uno a uno en el centro de la pantalla.</p>
+    <p>Cuando aparezca el objeto, deberás hacer lo siguiente:</p>
+    </p>En algunas ocasiones, el objeto aparecerá y desaparecerá automáticamente. No debes hacer nada más que observarlo antentamente.</p>
     </p></p>
-    </p>En otras ocasiones, el objeto vendrá acompañado de una frase relacionada para mantener tu atención y tendrás que indicar si es o no consistente con el objeto.</p>
+    </p>En otras ocasiones, tras el objeto aparecerá una frase relacionada y tendrás que indicar si es o no consistente con el objeto.</p>
     <p>Si la frase es CONSISTENTE, pulse la tecla '${correctKey.toUpperCase()}' (sí).</p>
-    <p>Si la frase es NO ES CONSISTENTE, pulse la tecla '${incorrectKey.toUpperCase()}' (no).</p>
+    <p>Si la frase NO ES CONSISTENTE, pulse la tecla '${incorrectKey.toUpperCase()}' (no).</p>
+    <p>Debes estar muy atento a cada objeto, ya que no sabes cuándo te va a aparecer una frase relacionada y cuándo no.</p>
     </p></p>
-    <p>Le recomendamos colocar los dedos sobre las teclas ${correctKey.toUpperCase()} y ${incorrectKey.toUpperCase()} durante la tarea para no olvidarlas.</p>
-    </p>Por ejemplo: si aparece la imagen de una caja abierta y aparece la frase: "La caja está cerrada", deberá pulsar "NO".</p>
+    <p>Te recomendamos colocar los dedos sobre las teclas ${correctKey.toUpperCase()} y ${incorrectKey.toUpperCase()} durante la tarea para no olvidarlas.</p>
+    </p>Por ejemplo: primero te aparece la imagen de una caja abierta. Inmediatamente después, la imagen desaparece y te aparece la siguiente frase: "La caja está cerrada". En este caso, deberás pulsar "NO".</p>
+    </p>Tendrás que responder lo más rápido posible, ya que si tardas, la frase desaparecerá y continuará el experimento sin haber registrado tu respuesta.</p>
     <br />
     <div>
       <img src='https://raw.githubusercontent.com/saramff/objects-attributes-images/refs/heads/master/Caja.jpg'  class="img-instructions" />
@@ -325,7 +327,7 @@ let instructionsSentencePresentation = {
 timeline.push(instructionsSentencePresentation);
 
 /* Create stimuli array for sentence presentation */
-let sentenceRecognitionStimuli = allSentences.slice(0,5).map((sentence) => {
+let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   if (!sentence.name) {
     return {
       justImgStimulus: `
@@ -479,29 +481,29 @@ timeline.push(testObjectsExperimentalNameProcedure);
 /**************************************************************************************/
 
 
-// const supabase = createClient(
-//   import.meta.env.VITE_SUPABASE_URL,
-//   import.meta.env.VITE_SUPABASE_API_KEY
-// );
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_API_KEY
+);
 
-// const TABLE_NAME = "experimento_objetos_atributos_perceptual";
+const TABLE_NAME = "experimento_objetos_atributos_perceptual";
 
-// async function saveData(data) {
-//   console.log(data);
-//   const { error } = await supabase.from(TABLE_NAME).insert({ data });
+async function saveData(data) {
+  console.log(data);
+  const { error } = await supabase.from(TABLE_NAME).insert({ data });
 
-//   return { error };
-// }
+  return { error };
+}
 
-// const saveDataBlock = {
-//   type: jsPsychCallFunction,
-//   func: function() {
-//     saveData(jsPsych.data.get())
-//   },
-//   timing_post_trial: 200
-// }
+const saveDataBlock = {
+  type: jsPsychCallFunction,
+  func: function() {
+    saveData(jsPsych.data.get())
+  },
+  timing_post_trial: 200
+}
 
-// timeline.push(saveDataBlock);
+timeline.push(saveDataBlock);
 
 
 

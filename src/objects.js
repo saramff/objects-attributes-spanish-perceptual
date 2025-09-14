@@ -311,11 +311,11 @@ export const nonExperimentalNames = [
   { name: "cesta" },
   { name: "exprimidor" },
   { name: "helado" },
-  { name: "huevos" },
+  { name: "trompeta" },
   { name: "lupa" },
   { name: "pizarra" },
   { name: "regadera" },
-  { name: "sillón" },
+  { name: "pala" },
   { name: "tirita" },
   { name: "tostadora" },
   { name: "cebolla" },
@@ -331,7 +331,7 @@ export const nonExperimentalNames = [
   { name: "candado" },
   { name: "escalera" },
   { name: "flexo" },
-  { name: "fresa" },
+  { name: "bocina" },
   { name: "micrófono" },
   { name: "miel" },
   { name: "patines" },
@@ -345,7 +345,7 @@ export const nonExperimentalNames = [
   { name: "acordeón" },
   { name: "cerillas" },
   { name: "dron" },
-  { name: "horno" },
+  { name: "cascanueces" },
   { name: "pecera" },
   { name: "piano" },
   { name: "radio" },
@@ -357,15 +357,15 @@ export const nonExperimentalNames = [
   { name: "crucifijo" },
   { name: "antifaz" },
   { name: "hámster" },
-  { name: "collar" },
+  { name: "imán" },
   { name: "fregona" },
   { name: "herradura" },
   { name: "almohada" },
   { name: "biberón" },
-  { name: "calendario" },
+  { name: "caballete" },
   { name: "jaula" },
   { name: "dardo" },
-  { name: "calabaza" },
+  { name: "concha" },
   { name: "lasaña" },
 ];
 
@@ -379,20 +379,20 @@ export const controlSentences = [
     name: "alfombra",
   },
   {
-    img: `${IMG_URL}51.jpg`,
-    name: "peso",
+    img: `${IMG_URL}191.jpg`,
+    name: "teclado",
   },
   {
-    img: `${IMG_URL}52.jpg`,
-    name: "batidora",
+    img: `${IMG_URL}97.jpg`,
+    name: "ventilador",
   },
   {
     img: `${IMG_URL}53.jpg`,
     name: "brocha",
   },
   {
-    img: `${IMG_URL}54.jpg`,
-    name: "muffin",
+    img: `${IMG_URL}75.jpg`,
+    name: "bastón",
   },
   {
     img: `${IMG_URL}55.jpg`,
@@ -403,12 +403,12 @@ export const controlSentences = [
     name: "barril",
   },
   {
-    img: `${IMG_URL}57.jpg`,
-    name: "peine",
+    img: `${IMG_URL}86.jpg`,
+    name: "espejo",
   },
   {
-    img: `${IMG_URL}58.jpg`,
-    name: "cepillo",
+    img: `${IMG_URL}80.jpg`,
+    name: "aspiradora",
   },
   {
     img: `${IMG_URL}59.jpg`,
@@ -447,20 +447,20 @@ export const controlSentences = [
     name: "martillo",
   },
   {
-    img: `${IMG_URL}68.jpg`,
-    name: "sandía",
+    img: `${IMG_URL}93.jpg`,
+    name: "silla",
   },
   {
-    img: `${IMG_URL}69.jpg`,
-    name: "naranja",
+    img: `${IMG_URL}112.jpg`,
+    name: "mantequilla",
   },
   {
     img: `${IMG_URL}70.jpg`,
     name: "palomitas",
   },
   {
-    img: `${IMG_URL}71.jpg`,
-    name: "ordenador",
+    img: `${IMG_URL}82.jpg`,
+    name: "calculadora",
   },
   {
     img: `${IMG_URL}72.jpg`,
@@ -475,8 +475,8 @@ export const controlSentences = [
     name: "pinza",
   },
   {
-    img: `${IMG_URL}75.jpg`,
-    name: "bastón",
+    img: `${IMG_URL}54.jpg`,
+    name: "brownie",
   },
   {
     img: `${IMG_URL}76.jpg`,
@@ -495,16 +495,16 @@ export const controlSentences = [
     name: "abanico",
   },
   {
-    img: `${IMG_URL}80.jpg`,
-    name: "aspiradora",
+    img: `${IMG_URL}58.jpg`,
+    name: "cepillo de dientes",
   },
   {
     img: `${IMG_URL}81.jpg`,
     name: "patatas fritas",
   },
   {
-    img: `${IMG_URL}82.jpg`,
-    name: "calculadora",
+    img: `${IMG_URL}71.jpg`,
+    name: "pantalla",
   },
   {
     img: `${IMG_URL}83.jpg`,
@@ -516,15 +516,15 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}85.jpg`,
-    name: "escurridor",
+    name: "colador",
   },
   {
-    img: `${IMG_URL}86.jpg`,
-    name: "espejo",
+    img: `${IMG_URL}57.jpg`,
+    name: "cepillo",
   },
   {
     img: `${IMG_URL}87.jpg`,
-    name: "tinaja",
+    name: "botijo",
   },
   {
     img: `${IMG_URL}88.jpg`,
@@ -547,8 +547,8 @@ export const controlSentences = [
     name: "café",
   },
   {
-    img: `${IMG_URL}93.jpg`,
-    name: "silla",
+    img: `${IMG_URL}68.jpg`,
+    name: "sandía",
   },
   {
     img: `${IMG_URL}94.jpg`,
@@ -563,16 +563,16 @@ export const controlSentences = [
     name: "tomate",
   },
   {
-    img: `${IMG_URL}97.jpg`,
-    name: "ventilador",
+    img: `${IMG_URL}52.jpg`,
+    name: "batidora",
   },
   {
     img: `${IMG_URL}98.jpg`,
-    name: "zapatos",
+    name: "zapatillas",
   },
   {
     img: `${IMG_URL}99.jpg`,
-    name: "vela",
+    name: "candelabro",
   },
   {
     img: `${IMG_URL}100.jpg`,
@@ -592,7 +592,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}104.jpg`,
-    name: "paquete",
+    name: "caja",
   },
   {
     img: `${IMG_URL}105.jpg`,
@@ -600,7 +600,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}106.jpg`,
-    name: "gominolas",
+    name: "caramelos",
   },
   {
     img: `${IMG_URL}107.jpg`,
@@ -623,8 +623,8 @@ export const controlSentences = [
     name: "lazo",
   },
   {
-    img: `${IMG_URL}112.jpg`,
-    name: "mantequilla",
+    img: `${IMG_URL}69.jpg`,
+    name: "naranja",
   },
   {
     img: `${IMG_URL}113.jpg`,
@@ -632,7 +632,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}114.jpg`,
-    name: "pañuelo",
+    name: "caja de pañuelos",
   },
   {
     img: `${IMG_URL}115.jpg`,
@@ -800,7 +800,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}156.jpg`,
-    name: "jarra",
+    name: "jarrón",
   },
   {
     img: `${IMG_URL}157.jpg`,
@@ -840,7 +840,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}166.jpg`,
-    name: "cómoda",
+    name: "cajonera",
   },
   {
     img: `${IMG_URL}167.jpg`,
@@ -868,7 +868,7 @@ export const controlSentences = [
   },
   {
     img: `${IMG_URL}173.jpg`,
-    name: "post-it",
+    name: "post-its",
   },
   {
     img: `${IMG_URL}174.jpg`,
@@ -939,8 +939,8 @@ export const controlSentences = [
     name: "patata",
   },
   {
-    img: `${IMG_URL}191.jpg`,
-    name: "teclado",
+    img: `${IMG_URL}51.jpg`,
+    name: "peso",
   },
   {
     img: `${IMG_URL}192.jpg`,
