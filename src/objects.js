@@ -361,8 +361,6 @@ export const nonExperimentalNames = [
   { name: "fregona" },
   { name: "herradura" },
   { name: "almohada" },
-  { name: "biberón" },
-  { name: "caballete" },
   { name: "jaula" },
   { name: "dardo" },
   { name: "concha" },
