@@ -54,14 +54,16 @@ const controlObjectsImages = Array.from(
 const objectsExperimental = sentences.map((sentence) => {
   return {
     name: sentence.name,
-    correct_response: correctKey
+    correct_response: correctKey,
+    case: "experimental",
   }
 })
 
 const objectsNonExperimental = nonExperimentalNames.map((nonExperimentalName) => {
   return {
     name: nonExperimentalName.name,
-    correct_response: incorrectKey
+    correct_response: incorrectKey,
+    case: "non experimental",
   }
 })
 
@@ -72,7 +74,8 @@ const controlSentencesSlice = controlSentences.slice(0, 24);
 const objectsControlExperimental = controlSentencesSlice.map((control) => {
   return {
     name: control.name,
-    correct_response: correctKey
+    correct_response: correctKey,
+    case: "control",
   }
 })
 
@@ -447,7 +450,8 @@ let objectsExperimentalRecognitionStimuli = allObjectsExperimental.map((objExper
         <p class="${correctKey === 'a' ? 'right' : 'left'}">NO PRESENTE</p>
       </div>
     `,
-    correct_response: objExperimental.correct_response
+    correct_response: objExperimental.correct_response,
+    case: objExperimental.case
   };
 });
 
@@ -458,6 +462,7 @@ let testObjectsExperimentalName = {
   choices: ['a', 'l'],
   data: {
     task: "response objects experimental names test",
+    type: jsPsych.timelineVariable("case"),
     correct_response: jsPsych.timelineVariable("correct_response"),
   },
   on_finish: function (data) {
