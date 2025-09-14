@@ -3,7 +3,7 @@
 //                                                                    //  
 ////////////////////////////////////////////////////////////////////////
 
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 import { sentences, controlSentences, nonExperimentalNames } from "./objects.js";
 
 
@@ -70,7 +70,7 @@ const objectsNonExperimental = nonExperimentalNames.map((nonExperimentalName) =>
 shuffle(controlSentences);
 const controlSentencesSlice = controlSentences.slice(0, 24);
 
-const objectsControlExperimental = controlSentences.map((control) => {
+const objectsControlExperimental = controlSentencesSlice.map((control) => {
   return {
     name: control.name,
     correct_response: correctKey
@@ -188,7 +188,7 @@ var participantName = {
   }
 };
 
-timeline.push(participantName);
+// timeline.push(participantName);
 
 var centroAsociado = {
   type: jsPsychSurveyText,
@@ -208,7 +208,7 @@ var centroAsociado = {
   }
 };
 
-timeline.push(centroAsociado);
+// timeline.push(centroAsociado);
 
 var age = {
   type: jsPsychSurveyText,
@@ -228,7 +228,7 @@ var age = {
   }
 };
 
-timeline.push(age);
+// timeline.push(age);
 
 var demo2 = {
   type: jsPsychSurveyMultiChoice,
@@ -255,7 +255,7 @@ var demo2 = {
     jsPsych.data.addProperties({gender: help_gender, language: help_language});
   }
 };
-timeline.push(demo2);
+// timeline.push(demo2);
 
 /************************************************************************************************ */
 
@@ -327,34 +327,26 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
   if (!sentence.name) {
     return {
       justImgStimulus: `
-        <h3 class="sentence"></h3>
         <img class="object-img" src="${sentence.img}">
       `,
       stimulus: `
         <h3 class="sentence">${sentence.sentence}</h3>
-        <img class="object-img" src="${sentence.img}">
         <div class="keys">
           <p class="${correctKey === 'a' ? 'left' : 'right'}">SÍ</p>
           <p class="${correctKey === 'a' ? 'right' : 'left'}">NO</p>
         </div>
       `,
-      correct_response: sentence.correct_response
+      correct_response: sentence.correct_response,
+      stimulus_duration: 3000
     };
   } else {
     return {
       justImgStimulus: `
-        <h3 class="sentence"></h3>
         <img class="object-img" src="${sentence.img}">
       `,
-      stimulus: `
-        <h3 class="sentence">${sentence.name}</h3>
-        <img class="object-img" src="${sentence.img}">
-        <div class="keys">
-          <p class="left">CONTINUAR</p>
-          <p class="right">CONTINUAR</p>
-        </div>
-      `,
-      correct_response: null
+      stimulus: "",
+      correct_response: null,
+      stimulus_duration: 0
     }
   }
 });
@@ -372,6 +364,7 @@ let testSentences = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: jsPsych.timelineVariable("stimulus"),
   choices: ['a', 'l'],
+  trial_duration: jsPsych.timelineVariable("stimulus_duration"),
   data: {
     task: "response sentences test",
     correct_response: jsPsych.timelineVariable("correct_response"),
@@ -484,29 +477,29 @@ timeline.push(testObjectsExperimentalNameProcedure);
 /**************************************************************************************/
 
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_API_KEY
-);
+// const supabase = createClient(
+//   import.meta.env.VITE_SUPABASE_URL,
+//   import.meta.env.VITE_SUPABASE_API_KEY
+// );
 
-const TABLE_NAME = "experimento_objetos_atributos_perceptual";
+// const TABLE_NAME = "experimento_objetos_atributos_perceptual";
 
-async function saveData(data) {
-  console.log(data);
-  const { error } = await supabase.from(TABLE_NAME).insert({ data });
+// async function saveData(data) {
+//   console.log(data);
+//   const { error } = await supabase.from(TABLE_NAME).insert({ data });
 
-  return { error };
-}
+//   return { error };
+// }
 
-const saveDataBlock = {
-  type: jsPsychCallFunction,
-  func: function() {
-    saveData(jsPsych.data.get())
-  },
-  timing_post_trial: 200
-}
+// const saveDataBlock = {
+//   type: jsPsychCallFunction,
+//   func: function() {
+//     saveData(jsPsych.data.get())
+//   },
+//   timing_post_trial: 200
+// }
 
-timeline.push(saveDataBlock);
+// timeline.push(saveDataBlock);
 
 
 
