@@ -283,7 +283,7 @@ let fixation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: '<div style="font-size:60px;">+</div>',
   choices: "NO_KEYS", // Prevent key press
-  trial_duration: 500, // Fixation duration
+  trial_duration: 1000, // Fixation duration
   data: {
     task: "fixation",
   },
@@ -363,7 +363,7 @@ let justImg = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: jsPsych.timelineVariable("justImgStimulus"),
   choices: "NO_KEYS", // Prevent key press
-  trial_duration: 1000, // just image duration
+  trial_duration: 2000, // just image duration
 };
 
 /* Sentences presentation trial */
