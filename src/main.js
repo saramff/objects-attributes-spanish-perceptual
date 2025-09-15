@@ -344,7 +344,7 @@ let sentenceRecognitionStimuli = allSentences.map((sentence) => {
         </div>
       `,
       correct_response: sentence.correct_response,
-      stimulus_duration: 3000
+      stimulus_duration: null
     };
   } else {
     return {
